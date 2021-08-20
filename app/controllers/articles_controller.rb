@@ -8,15 +8,19 @@ class ArticlesController < ApplicationController
     end
 
     def new
-        @article 
+        @article = Article.new
     end
 
     def create
         # render plain: params[:article]
         @article =  Article.new(params.required(:article).permit(:title, :description))
         # render plain: @article.inspect
-        @article.save
+        if @article.save
         # redirect_to article_path(@article)#rails will automaticlly retreive the ID from the object article
-        redirect_to @article #will have the same effect that above
+          flash[:notice] = "Article was created successfully."
+          redirect_to @article #will have the same effect that above
+        else 
+          render 'new'
+        end
     end
 end 
