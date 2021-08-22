@@ -2,3 +2,10 @@
 <%# "<%=" means evaluate and displat %>
 <p><strong>Title: </strong><%= @article.title %></p>
 <p><strong>Description: </strong><%= @article.description %></p>
+
+<br>
+<%= link_to "Edit the article", edit_article_path(@article) %>
+|
+<%= link_to "Delete this article", article_path(@article), method: :delete, data: { confirm: "Are you sure?"} %> <%#the confirmation is javascript%>
+|
+<%= link_to "Return to articles page", articles_path %>
