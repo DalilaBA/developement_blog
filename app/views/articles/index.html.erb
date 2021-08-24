@@ -1,21 +1,122 @@
-<h1>Articles Listing page</h1>
-<table>
-    <thead>
-        <th>Title</th>
-        <th>Decription</th>
-        <th colspan="3">Action</th>
-    </thead>
-    <tbody>
-        <% @articles.each do |article| %>
-        <tr>
-            <td><%= article.title %></td>
-            <td><%= article.description %></td>
-            <td> <%= link_to 'Show', article_path(article) %> </td>
-            <td> <%= link_to 'Edit', edit_article_path(article) %> </td>
-            <td> <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?"} %> </td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+<h1 class="fs-2 text-center"  style="padding: 77px 0 77px ">Articles Listing page</h1>
+<div class="container">
+  <% @articles.each do |article| %>
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="bg-faded card-header font-italic">
+            by Mel Babou
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success" %></h5>
+            <p class="card-text"><%= truncate(article.description, length: 100) %></p>
+            <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
+            <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
+            <%= link_to "Delete", article_path(article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+          </div>
+          <div class="card-footer text-muted">
+            <small>Created <%= time_ago_in_words(article.created_at) %> ago, 
+            edited <%= time_ago_in_words(article.updated_at) %> ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div> 
+<%#
+ <section class="page-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="product-item">
+                            <img class="shadow product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="images/creativity.png" alt="creativity" />
+                            <div class=" product-item-description d-flex ms-auto">
+                                <div class=" p-5 rounded">
+                                    <ul class="list-group-flush list-unstyled">
+                                         <% @articles.each do |article| %>
+                                        <%# <li><%= link_to article.title, article_path(article),class: " text-uppercase list-group-item" %><%#</li>               
+                                         <% end %>
+<%#</ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col">
+                        <div class="product-item">
+                            <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="images/motivation.png" alt="motivation" />
+                            <div class="product-item-description d-flex ms-auto">
+                                <div class="p-5 rounded">
+                                    <ul>
+                                         <% @articles.each do |article| %>
+                                        <%# <li><%= link_to article.title, article_path(article),class: "nav-link text-uppercase" %><%#</li>               
+                                         <% end %>
+
+                                   <%# </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <br>
+                <div class="row">
+                    <div class="col">
+                        <div class="product-item">
+                            <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="images/focus.png" alt="focus" />
+                            <div class="product-item-description d-flex ms-auto">
+                                <div class="p-5 rounded">
+                                    <ul>
+                                         <% @articles.each do |article| %>
+                                        <%# <li><%= link_to article.title, article_path(article),class: "nav-link text-uppercase" %><%#</li>               
+                                         <% end %>
+
+                                  <%#  </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product-item">
+                            <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="images/desition_making.png" alt="desition_making" />
+                            <div class="product-item-description d-flex ms-auto">
+                                <div class="p-5 rounded">
+                                    <ul>
+                                         <% @articles.each do |article| %>
+                                        <%# <li><%= link_to article.title, article_path(article),class: "nav-link text-uppercase" %><%#</li>               
+                                         <% end %>
+
+                                   <%# </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+<%# <div class="row">
+    <div class="container">
+        <table class="table" >
+            <thead>
+                <th>Title</th>
+                <th>Decription</th>
+                <th colspan="3">Action</th>
+            </thead>
+            <tbody>
+                <% @articles.each do |article| %>
+               <%# <tr>
+                    <td><%= article.title %><%#</td>
+                    <td><%= article.description %><%#</td>
+                    <td> <%= link_to 'Show', article_path(article),  class: "nav-link text-uppercase" %> <%#</td>
+                    <td> <%= link_to 'Edit', edit_article_path(article) , class: "nav-link text-uppercase" %> <%#</td>
+                    <td> <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?"}, class: "nav-link text-uppercase" %><%# </td>
+                </tr>
+                <% end %>
+           <%# </tbody>
+        </table>
+    </div>
+</div> 
+
 <br>
 <%= link_to "Add new article", new_article_path %>
