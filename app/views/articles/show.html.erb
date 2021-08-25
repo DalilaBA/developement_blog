@@ -9,7 +9,7 @@
             <%= link_to "Delete", article_path(@article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
           </div>
           <div class="card-footer text-muted">
-            <small>Created <%= time_ago_in_words(@article.created_at) %> ago by Mel Babou, 
+            <small>Created <%= time_ago_in_words(@article.created_at) %> ago by <%= @article.user.username if @article.user  %>, 
             edited <%= time_ago_in_words(@article.updated_at) %> ago</small>
           </div>
         </div>
