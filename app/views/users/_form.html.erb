@@ -27,7 +27,7 @@
           </div>
           <br>
           <div class=" text-center">
-            <%= f.submit "Sign Up",class: "btn btn-primary" %>
+            <%= f.submit(@user.new_record? ? "Sign Up" : "update account" ,class: "btn btn-primary" )%>
             <%= link_to 'Cansel', articles_path, class: "btn btn-secondary ", type: "button" %>
           </div>
         <% end %>
