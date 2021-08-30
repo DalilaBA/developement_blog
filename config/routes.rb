@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   # resources :articles, only: [:show, :index, :new, :create, :edit, :update] #the only statment is for specifing only one route
   resources :articles #this is showing all the liste provided by rails routes --expended
+  get 'signup', to: 'users#new'
+  # post  'users', to: 'users#create' replaced with a more general instruction:
+  resources :users, except: [:new]
 end
