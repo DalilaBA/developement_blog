@@ -1,6 +1,12 @@
 <h1 class="fs-2 text-center"  style="padding: 77px 0 77px ">Articles Listing page</h1>
-    <%= render 'article' %>
-</div> 
+   
+<div class="flickr_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
+<%= render 'article' %>
+<div class="flickr_pagination mb-4">
+  <%= will_paginate @articles, :container => false %>
+</div>
 <%#
  <section class="page-section">
             <div class="container">
