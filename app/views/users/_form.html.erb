@@ -26,13 +26,6 @@
             </div>
           </div>
           <br>
-          <div class="row">
-            <%= f.label "Profile photo", class: "col-2 col-form-label" %>
-            <div class="col-10"> 
-              <%= f.file_field :avatar, class: "form-control shadow-sm rounded", placeholder: "Choose a password" %>
-            </div>
-          </div>
-          <br>
           <div class=" text-center">
             <%= f.submit(@user.new_record? ? "Sign Up" : "update account" ,class: "btn btn-primary" )%>
             <%= link_to 'Cansel', articles_path, class: "btn btn-secondary ", type: "button" %>
