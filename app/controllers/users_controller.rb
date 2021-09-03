@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def create
     # byebug
     @user = User.new(user_params)
-    @user.avatar.attach(params[:avatar])
+    # @user.avatar.attach(params[:avatar])
 
     if @user.save
       flash[:notice] ="Welcom #{@user.username} to the Developement blog, you have successfully sign up"
@@ -34,8 +34,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.avatar.attach(params[:avatar])
-    byebug
+    # @user.avatar.attach(params[:avatar])
+    # byebug
     if @user.update(user_params)
       flash[:notice] = "Your account information was successfuly updated"
       redirect_to @user
@@ -46,6 +46,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :avatar)
+    params.require(:user).permit(:username, :email, :password)
   end
 end
