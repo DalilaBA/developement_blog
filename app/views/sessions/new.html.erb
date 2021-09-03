@@ -3,9 +3,7 @@
 
   <div class="row justify-content-center m-0">
       <div class="col-lg-10 col-sm-12">
-
-        <%= form_with(scope: @session, url: login_path, class: "shadow p-3 mb-3 rounded", local: true) do |f| %>
-        
+        <%= form_with(scope: :session, url: login_path, class: "shadow p-3 mb-3 rounded", local: true) do |f| %>
           <div class="row">
             <%= f.label :email, class: "col-2 col-form-label" %>
             <div class="col-10"> 
