@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :reqire_user, except: [:show, :index]
+  before_action :reqire_user, except: [:show, :index, :destroy]
   before_action :require_own_user, only: [:edit, :update, :destroy]
 
     def show
