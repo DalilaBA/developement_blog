@@ -14,4 +14,13 @@ module ApplicationHelper
   #     'https://randomuser.me/api/portraits/women/49.jpg'
   #   end
   # end
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+      
+  end
+
+  def logged_in?
+    !!current_user #turning the variable to a boolean
+  end
 end

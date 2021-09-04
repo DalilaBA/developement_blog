@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+before_action :set_user, only: [:show, :edit, :update]
+
   def new
     @user = User.new
   end
 
   def show
-    @user = User.find(params[:id])
     # @user.avatar.attach(params[:avatar])
     # byebug
     # @articles = @user.articles
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
     # @user.avatar.attach(params[:avatar])
 
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] ="Welcom #{@user.username} to the Developement blog, you have successfully sign up"
       redirect_to @user
     else
@@ -29,13 +31,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     
 
   end
 
   def update
-    @user = User.find(params[:id])
     # @user.avatar.attach(params[:avatar])
     # byebug
     if @user.update(user_params)
@@ -47,6 +47,11 @@ class UsersController < ApplicationController
   end
 
   private
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end
