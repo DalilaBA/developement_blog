@@ -8,4 +8,20 @@ class ApplicationController < ActionController::Base
     !!current_user #turning the variable to a boolean
   end
 
+  def reqire_user
+    if !logged_in?
+      flash[:alert] = "You must be logged in to perform that action"
+      redirect_to login_path
+    end
+  end
+
+  def require_own_user
+    if current_user !=@article.user
+      flash[:alert] = "You can only edit or delete your own article"
+      redirect_to @article
+    end
+  end
+  
+
+
 end
