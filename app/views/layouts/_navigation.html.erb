@@ -12,7 +12,7 @@
                        
                         <% if logged_in? %>
                         <li class="nav-item px-lg-4"><%= link_to "Log out", logout_path, class: "nav-link text-uppercase text-right",method: :delete%></li>
-                        <li class="nav-item px-lg-4"><%= link_to current_user.username, user_path(current_user), class: "nav-link text-uppercase text-right" %></li>
+                        <li class="nav-item px-lg-4"><%= link_to current_user.username, user_path(current_user), class: "nav-link text-uppercase text-right " %></li>
 
                         <% else %>
                          <li class="nav-item px-lg-4"><%= link_to "Sign Up", signup_path, class: "nav-link text-uppercase text-right" %></li>

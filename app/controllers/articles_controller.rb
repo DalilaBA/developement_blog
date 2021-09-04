@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
       # render plain: params[:article]
        @article =  Article.new(article_params)
       #associate all the articles in the DB and the futur new one with the first user recorded
-        @article.user = User.first
+        @article.user = current_user
       # render plain: @article.inspect
       if @article.save
       # redirect_to article_path(@article)#rails will automaticlly retreive the ID from the object article
