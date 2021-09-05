@@ -1,7 +1,7 @@
 <h1 class="text-center mt-4">Show <%= @user.username %>'s profile</h1>
 <%= gravatar_for @user, size: 200 %>
 <div class="text-center mt-4">
-<% if logged_in? && @user == current_user %>
+<% if logged_in? && @user == current_user || current_user.admin? %>
   <%= link_to "Edit your profile", edit_user_path(current_user), class: "btn btn-outline-info" %>  
   <%= link_to "Delete your profile", user_path(current_user), class: "btn btn-outline-danger", method: :delete, data: {confirm: "are you sure?!"} %>  
 

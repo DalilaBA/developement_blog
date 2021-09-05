@@ -35,7 +35,7 @@ before_action :require_own_user, only: [:edit, :update, :destroy]
 
   def destroy
     @user.destroy
-    session[:user_id] = nil
+    session[:user_id] = nil if @user == current_user
     flash[:notice] = "Your account and all associated articles has been successfully deleted"
     redirect_to articles_path
   end
@@ -65,7 +65,7 @@ before_action :require_own_user, only: [:edit, :update, :destroy]
     params.require(:user).permit(:username, :email, :password)
   end
   def require_own_user
-    if current_user !=@user
+    if current_user !=@user && !current_user.admin?
       flash[:alert] = "You can only edit or delete your own profile"
       redirect_to @user
     end
