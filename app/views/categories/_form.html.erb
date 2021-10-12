@@ -1,0 +1,16 @@
+ <%= render 'shared/errors', obj: @category %>
+
+        <%= form_with(model: @category, class: "shadow p-3 mb-3 rounded", local: true) do |f| %>
+        <div class="row">
+            <%= f.label :name,"Category name", class: "col-2 col-form-label" %>
+            <div class="col-10">
+              <%= f.text_field :name, class: "form-control shadow-sm rounded", placeholder: "Enter a name" %>
+            </div>
+          </div>
+          <br>
+          <div class=" text-center">
+            <%= f.submit class: "btn btn-primary" %>
+            <%= link_to 'Cansel', category_path(@category), class: "btn btn-secondary ", type: "button" %>
+          </div>
+        <% end %>
+      </div>
